@@ -7,6 +7,7 @@ public class Spell : MonoBehaviour
 
     public float Damage => _damage;
     public float Speed => _speed;
+
     public Transform Target { get; private set; }
 
     public void SpecifyGoal(Transform target)

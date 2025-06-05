@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Character))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -17,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private IMovementInput _movementInput;
     private GravityHandler _gravityHandler;
     private MovementHandler _movementHandler;
+
+    private bool _isMoving;
+    private bool _wasMovingLastFrame;
+
+    public event Action<bool> OnMovementStateChanged;
 
     private void Awake()
     {
@@ -38,5 +44,13 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = _movementInput.GetMovementInput();
 
         _movementHandler.Move(input, transform);
+
+        _isMoving = input.magnitude > 0.1f;
+
+        if (_isMoving != _wasMovingLastFrame)
+        {
+            OnMovementStateChanged?.Invoke(_isMoving);
+            _wasMovingLastFrame = _isMoving;
+        }
     }
 }

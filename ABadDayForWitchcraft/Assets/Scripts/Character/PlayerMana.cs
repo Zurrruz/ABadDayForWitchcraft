@@ -7,7 +7,7 @@ public class PlayerMana : MonoBehaviour
     [SerializeField] private ColisionDetector _colisionDetector;
     [SerializeField] private AttackPlayer _attackPlayer;
 
-    private float _currentMana = 0;
+    private float _currentMana = 100;
 
     public event Action<float, float> Changed;
 
@@ -32,7 +32,7 @@ public class PlayerMana : MonoBehaviour
         manaOrb.Collect();
     }
 
-    private void Spend()
+    private void Spend(float time)
     {
         _currentMana = 0;
 

@@ -11,7 +11,7 @@ public class AttackButtonPlayer : MonoBehaviour
 
     private void Awake()
     {
-        _button.interactable = false;
+        _button.interactable = true;
     }
 
     private void OnEnable()

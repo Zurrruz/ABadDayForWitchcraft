@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AttackPlayer : MonoBehaviour
@@ -7,8 +8,18 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] private Spell _spellPrefab;
     [SerializeField] private AttackButtonPlayer _attackButton;
     [SerializeField] private Transform _castPoint;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private float _castSpeed;
 
-    public event Action Attacked;
+    private WaitForSeconds _delayTime;
+    private Coroutine _delayCasting;
+
+    public event Action<float> Attacked;
+
+    private void Awake()
+    {
+        _delayTime = new(_castSpeed);
+    }
 
     private void OnEnable()
     {
@@ -22,15 +33,26 @@ public class AttackPlayer : MonoBehaviour
 
     private void Cast()
     {
-        //реализовать каст с обрывом каста при движении
+        _delayCasting = StartCoroutine(Delay());
 
-        Spell spell =  Instantiate(_spellPrefab, _castPoint);
+        Attacked?.Invoke(_castSpeed);        
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.05f);
+
+        Spell spell = Instantiate(_spellPrefab, _castPoint);
         spell.transform.SetParent(null);
         spell.SpecifyGoal(_enemy.transform);
 
-        Attacked?.Invoke();
-
         DealDamage();
+    }
+
+    private void CastBreakage()
+    {
+        if(_delayCasting != null) 
+            StopCoroutine(_delayCasting);
     }
 
     private void DealDamage()

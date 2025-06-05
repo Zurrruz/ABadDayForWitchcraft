@@ -36,6 +36,4 @@ public class GravityHandler
         _velocity.y += _gravity * (_velocity.y < 0 ? _fallMultiplier : 1f) * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
     }
-
-    public void SetVerticalVelocity(float velocity) => _velocity.y = velocity;
 }

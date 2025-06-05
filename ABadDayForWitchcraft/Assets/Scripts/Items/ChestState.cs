@@ -32,9 +32,9 @@ public class ChestState : IChestState
 
     public void ToggleAnimationActivity(bool state)
     {
-        if (_isOpened) return;
+        if (_isOpened) 
+            return;
 
-        if (state) 
-            _animator.SetTrigger("Nearby");
+        _animator.SetBool("Nearby", state);
     }
 }

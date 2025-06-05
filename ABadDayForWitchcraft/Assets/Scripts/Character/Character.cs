@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private MagicDestructionController _magicController;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _magicController.SystemUpdate();
     }
 }

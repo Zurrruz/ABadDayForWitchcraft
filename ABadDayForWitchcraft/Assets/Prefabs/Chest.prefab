@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8634050572783478756}
   - component: {fileID: 1554935918716476768}
+  - component: {fileID: 3740372310074070966}
   m_Layer: 0
   m_Name: interZone
   m_TagString: Untagged
@@ -138,6 +139,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.9234376, y: 0.64919865, z: 3.4528363}
   m_Center: {x: -0.0021851063, y: 0.28884053, z: -0.041305423}
+--- !u!114 &3740372310074070966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469943713028442007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d02de2f80703341ae9b922202e37ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9177037855590593648
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +223,7 @@ MonoBehaviour:
   _requiredClicks: 3
   _clickDelay: 0.5
   _animator: {fileID: 2709938158495300370}
-  _interactionZone: {fileID: 1469943713028442007}
+  _interactionZone: {fileID: 3740372310074070966}
 --- !u!65 &9105407692679722815
 BoxCollider:
   m_ObjectHideFlags: 0
